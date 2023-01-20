@@ -1,5 +1,4 @@
 const TextInput = (props) => {
-	console.log(props);
 	return (
 		<div>
 			<div>
