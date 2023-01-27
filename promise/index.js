@@ -74,49 +74,49 @@ const blockTime = () => {
 // 		console.log("rejectしたよ");
 // 	});
 
-// // aysnc await
-// const asyncExample = async value => {
-//   if (value === "success") {
-//     console.log("resolve");
-//     return "success";
-//   } else {
-//     console.log("reject");
-//     // 例外（エラー）を意図的に発生させる
-//     throw new Error("error");
-//   }
+// aysnc await
+// const asyncExample = async (value) => {
+// 	if (value === "success") {
+// 		console.log("resolve");
+// 		return "success";
+// 	} else {
+// 		console.log("reject");
+// 		// 例外（エラー）を意図的に発生させる
+// 		throw new Error("error");
+// 	}
 // };
 
 // asyncExample("success")
-//   .then(data => {
-//     console.log(data);
-//   })
-//   .catch(e => {
-//     // この行は実行されない
-//     console.log(e);
-//   });
+// 	.then((data) => {
+// 		console.log(data);
+// 	})
+// 	.catch((e) => {
+// 		// この行は実行されない
+// 		console.log(e);
+// 	});
 
 // asyncExample("hoge")
-//   .then(data => {
-//     // この行は実行されない
-//     console.log(data);
-//   })
-//   .catch(e => {
-//     console.log(e);
-//   });
+// 	.then((data) => {
+// 		// この行は実行されない
+// 		console.log(data);
+// 	})
+// 	.catch((e) => {
+// 		console.log(e);
+// 	});
 
-// const asyncExample2 = value => {
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       value === "success" ? resolve("success!!!!") : reject(new Error("error"));
-//     }, 2000);
-//   });
+// const asyncExample2 = (value) => {
+// 	return new Promise((resolve, reject) => {
+// 		setTimeout(() => {
+// 			value === "success" ? resolve("success!!!!") : reject(new Error("error"));
+// 		}, 2000);
+// 	});
 // };
 
-// const doAsyncExample2 = async value => {
-//   console.log("処理を開始");
-//   const hoge = await asyncExample2(value);
-//   console.log(hoge);
-//   console.log("処理を終了");
+// const doAsyncExample2 = async (value) => {
+// 	console.log("処理を開始");
+// 	const hoge = await asyncExample2(value);
+// 	console.log(hoge);
+// 	console.log("処理を終了");
 // };
 
 // doAsyncExample2("success");
@@ -139,3 +139,18 @@ const blockTime = () => {
 // };
 
 // doAsyncExampleException();
+
+try {
+	console.log("try節:この行は実行されます");
+	// 未定義の関数を呼び出してReferenceError例外が発生する
+	undefinedFunction();
+	// 例外が発生したため、この行は実行されません
+	console.log("hoge");
+} catch (error) {
+	// 例外が発生したあとはこのブロックが実行される
+	console.log("catch節:この行は実行されます");
+	console.log(error.message); // => "undefinedFunction is not defined"
+} finally {
+	// このブロックは例外の発生に関係なく必ず実行される
+	console.log("finally節:この行は実行されます");
+}
